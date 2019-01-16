@@ -47,9 +47,22 @@ class BST {
             inOrderTraversal(node.left);
             arr.push(node.data);
             inOrderTraversal(node.right);
-        }
+        };
         inOrderTraversal(this.root);
         return arr;
+    }
+    isPresent(value) {
+        let current = this.root;
+        while (current) {
+            if (current.data === value) {
+                return true;
+            } else if (current.data > value) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return false;
     }
 
 }
@@ -64,5 +77,5 @@ bst.add(22);
 bst.add(5);
 bst.add(7);
 bst.add(20);
-// console.log(bst.root.data)
 console.log(bst.get());
+console.log(bst.isPresent(5));
