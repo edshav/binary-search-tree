@@ -14,28 +14,28 @@ class BST {
         const node = this.root;
         if (node === null) {
             this.root = new Node(data);
-            return;
+            return true;
         } else {
             const searchTree = (node) => {
                 if (data < node.data) {
                     if (node.left === null) {
                         node.left = new Node(data);
-                        return;
+                        return true;
                     } else {
                         return searchTree(node.left);
                     }
                 } else if (data > node.data) {
                     if (node.right === null) {
                         node.right = new Node(data);
-                        return;
+                        return true;
                     } else {
                         return searchTree(node.right);
                     }
                 } else {
-                    return null;
+                    return false;
                 }
             };
-            searchTree(node);
+            return searchTree(node);
         }
     }
     get() {
@@ -79,3 +79,4 @@ bst.add(7);
 bst.add(20);
 console.log(bst.get());
 console.log(bst.isPresent(5));
+console.log(bst.add(5));
