@@ -78,6 +78,26 @@ class BST {
         }
         return current.data;
     }
+    remove(value, node = this.root, parent) {
+        if (node === null) {
+            return false;
+        }
+        if (value < node.data) {
+            return this.remove(value, node.left, node);
+        } else if (value > node.data) {
+            return this.remove(value, node.right, node);
+        } else {
+            if (node.left && node.right) {
+                node.data = this.maxValue(node.left);
+                this.remove(node.data, node.left, node);
+            } else if (parent.left === node) {
+                parent.left = node.left ? node.left : node.right;
+            } else {
+                parent.right = node.left ? node.left : node.right;
+            }
+            return true;
+        }
+    }
 
 }
 
@@ -92,6 +112,9 @@ bst.add(5);
 bst.add(7);
 bst.add(20);
 console.log(bst.inOrder());
-console.log(bst.isPresent(5));
 console.log(bst.maxValue());
 console.log(bst.minValue());
+console.log('root', bst.root.data);
+console.log(bst.remove(bst.root.data));
+console.log('root', bst.root.data);
+console.log(bst.inOrder());
