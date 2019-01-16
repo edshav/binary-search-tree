@@ -38,7 +38,7 @@ class BST {
             return searchTree(node);
         }
     }
-    get() {
+    inOrder() {
         const arr = [];
         const inOrderTraversal = (node) => {
             if (node === null) {
@@ -77,6 +77,6 @@ bst.add(22);
 bst.add(5);
 bst.add(7);
 bst.add(20);
-console.log(bst.get());
+console.log(bst.inOrder());
 console.log(bst.isPresent(5));
 console.log(bst.add(5));
