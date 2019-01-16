@@ -64,6 +64,20 @@ class BST {
         }
         return false;
     }
+    maxValue(node = this.root) {
+        let current = node;
+        while (current.right) {
+            current = current.right;
+        }
+        return current.data;
+    }
+    minValue(node = this.root) {
+        let current = node;
+        while (current.left) {
+            current = current.left;
+        }
+        return current.data;
+    }
 
 }
 
@@ -79,4 +93,5 @@ bst.add(7);
 bst.add(20);
 console.log(bst.inOrder());
 console.log(bst.isPresent(5));
-console.log(bst.add(5));
+console.log(bst.maxValue());
+console.log(bst.minValue());
