@@ -38,6 +38,20 @@ class BST {
             searchTree(node);
         }
     }
+    get() {
+        const arr = [];
+        const inOrderTraversal = (node) => {
+            if (node === null) {
+                return;
+            }
+            inOrderTraversal(node.left);
+            arr.push(node.data);
+            inOrderTraversal(node.right);
+        }
+        inOrderTraversal(this.root);
+        return arr;
+    }
+
 }
 
 const bst = new BST();
@@ -50,4 +64,5 @@ bst.add(22);
 bst.add(5);
 bst.add(7);
 bst.add(20);
-console.log(bst.root.data)
+// console.log(bst.root.data)
+console.log(bst.get());
